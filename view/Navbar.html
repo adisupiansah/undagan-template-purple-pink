@@ -1,0 +1,93 @@
+<style>
+  .navbar {
+    background-color: #8785a2;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: -9px;
+  }
+  .navbar a:hover {
+    color: #272829;
+  }
+  #navbar-menus .nav-link.active {
+    color: #272829; /* Warna teks yang sesuai dengan latar belakang */
+  }
+</style>
+
+<nav
+  class="navbar navbar-dark navbar-expand fixed-bottom rounded-top-4 p-0"
+  id="navbar-menus">
+  <ul class="navbar-nav nav-justified w-100 align-items-center">
+    <li class="nav-item">
+      <a class="nav-link active" href="#home">
+        <i class="bx bxs-home"></i>
+        <span class="d-block" style="font-size: 0.7rem">Home</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#mempelai">
+        <i class="bi bi-people-fill"></i>
+        <span class="d-block" style="font-size: 0.7rem">Mempelai</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#date">
+        <i class="bi bi-calendar-check-fill"></i>
+        <span class="d-block" style="font-size: 0.7rem">Tanggal</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#galeri">
+        <i class="bi bi-images"></i>
+        <span class="d-block" style="font-size: 0.7rem">Galeri</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#amplop">
+        <i class="bi bi-wallet-fill"></i>
+        <span class="d-block" style="font-size: 0.7rem">Amplop</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#ucapan">
+        <i class="bi bi-chat-dots-fill"></i>
+        <span class="d-block" style="font-size: 0.7rem">Ucapan</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Fungsi untuk menentukan elemen yang aktif berdasarkan posisi scroll
+    function setActiveNav() {
+      var scrollPosition = $(window).scrollTop();
+
+      // Loop melalui setiap elemen nav-link untuk menentukan yang aktif
+      $("#navbar-menus .nav-link").each(function() {
+        var currentLink = $(this);
+        var refElement = $(currentLink.attr("href"));
+
+        if (
+          refElement.position().top <= scrollPosition &&
+          refElement.position().top + refElement.height() > scrollPosition
+        ) {
+          // Hapus kelas "active" dari semua elemen dan tambahkan pada yang aktif
+          $("#navbar-menus .nav-link").removeClass("active");
+          currentLink.addClass("active");
+        } else {
+          currentLink.removeClass("active");
+        }
+      });
+    }
+
+    // Panggil fungsi saat menggulir halaman
+    $(window).scroll(function() {
+      setActiveNav();
+    });
+
+    // Panggil fungsi sekali saat halaman dimuat
+    setActiveNav();
+  });
+</script>
+
+
